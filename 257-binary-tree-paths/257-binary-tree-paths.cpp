@@ -19,9 +19,9 @@ public:
     
     void path(TreeNode* root, string currentPath, vector<string> &ans){
         
-        if(root == NULL){
-            return;
-        }
+        // if(root == NULL){
+        //     return;
+        // }
         if(root->left == NULL && root->right == NULL){
             currentPath += to_string(root->val);
             ans.push_back(currentPath);
@@ -29,9 +29,15 @@ public:
         }
         
        
-        path(root->left, currentPath + to_string(root->val) +"->", ans);
-        path(root->right,currentPath + to_string(root->val)+"->" , ans);
-       
+        // path(root->left, currentPath + to_string(root->val) +"->", ans);
+        // path(root->right,currentPath + to_string(root->val)+"->" , ans);
+       if(root->left != NULL){
+            path(root->left, currentPath + to_string(root->val)+"->", ans);
+        }
+        
+        if(root->right != NULL){
+            path(root->right, currentPath+ to_string(root->val)+"->" , ans);
+        }
 
     } 
 };
